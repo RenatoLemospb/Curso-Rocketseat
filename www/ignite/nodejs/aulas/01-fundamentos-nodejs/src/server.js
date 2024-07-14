@@ -21,6 +21,8 @@ import http from 'node:http'
 
 // Cabeçalhos (Requisição/resposta) => Metadados
 
+// http status code
+
 const users = []
 
 const server = http.createServer((req, res) => {
@@ -31,7 +33,7 @@ const server = http.createServer((req, res) => {
    .setHeader('Content-type', 'application/json')
    .end(JSON.stringify(users))
 
-    return res.end(users)
+    //return res.end(users)
  }
  if (method == 'POST' && url == '/users'){
 users.push({
@@ -41,10 +43,10 @@ users.push({
 
 })
 
-    return res.end('Criação de usuário')
+    return res.writeHead(201).end()
  }
 
-    return res.end('Hello World')
+    return res.writeHead(404).end()
 })
 
 server.listen(3333)
