@@ -9,7 +9,7 @@ class OneToHundredStream extends Readable{
 
          setTimeout(()=>{
 
-         if (i > 100){
+         if (i > 5){
              this.push(null)
          } else {
              const buf = Buffer.from(String(i))
@@ -24,7 +24,7 @@ class OneToHundredStream extends Readable{
     method: 'POST',
     body: new OneToHundredStream(),
   }).then(response=>{
-    response.text().then(data =>{
+    response.text().then(data => {
         console.log(data)
     })
   })
